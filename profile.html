@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="A student's personal corner of the internet.">
+    <meta name="description" content="Aarish Korasikha's student profile page.">
     <title>Aarish Korasikha | Student Profile</title>
     <style>
       :root {
@@ -48,7 +48,7 @@
         overflow: hidden;
       }
       .hero::after {
-        content: "✿";
+        content: "⚽";
         position: absolute;
         right: 28px;
         top: 10px;
@@ -76,6 +76,8 @@
       .tag-list { display: flex; flex-wrap: wrap; gap: 8px; padding: 0; margin: 12px 0 0; list-style: none; }
       .tag-list li { padding: 4px 10px; border-radius: 999px; background: var(--green); font-size: .85rem; font-weight: 700; }
       .note { padding: 18px 20px; border-left: 5px solid #e6ad36; border-radius: 8px 16px 16px 8px; background: #fff3cc; }
+      .achievement-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+      .achievement-list li { padding: 14px 16px; border: 2px solid var(--ink); border-radius: 14px; background: #fff8d8; box-shadow: 4px 4px 0 var(--yellow); }
       footer { padding: 16px 0 32px; text-align: center; color: var(--muted); font-size: .9rem; }
       @media (max-width: 620px) {
         .nav { align-items: flex-start; flex-direction: column; }
@@ -93,18 +95,18 @@
           <a href="#about">About</a>
           <a href="#interests">Interests</a>
           <a href="#projects">Projects</a>
-          <a href="#favorites">Favorites</a>
+          <a href="#achievements">Achievements</a>
         </div>
       </nav>
     </header>
 
     <main class="wrap">
       <div class="hero">
-        <span class="kicker">student • maker • still figuring it out</span>
+        <span class="kicker">7th grader • soccer player • dreamer</span>
         <h1>Hi, I'm <span>Aarish!</span></h1>
-        <p class="intro">Welcome to my little corner of the internet. I'm a high school student who likes learning new things, making stuff, and finding creative ways to solve problems.</p>
+        <p class="intro">I’m a 7th grader who loves soccer, especially watching and learning from players like Lamine Yamal. I’m also really into design, space, and engineering because I like building cool ideas and imagining what the future could look like.</p>
         <div class="hero-actions">
-          <a class="button" href="#projects">See what I'm making ↓</a>
+          <a class="button" href="#projects">See what I’m into ↓</a>
           <a class="button alt" href="https://github.com/akorasikha" target="_blank" rel="noreferrer">My GitHub ↗</a>
         </div>
       </div>
@@ -112,28 +114,28 @@
       <section id="about">
         <h2 class="section-title">A little about me</h2>
         <div class="card">
-          <p>I'm a student exploring technology and creative projects one step at a time. This page is where I can share things I'm learning and making. I'm still updating it, so check back as I add more!</p>
+          <p>I’m a student who loves trying new things and learning at the same time. Soccer keeps me active and teaches me teamwork, discipline, and never giving up. I also enjoy creativity, especially design, and I like thinking about how engineering and space can help people solve big problems.</p>
         </div>
       </section>
 
       <section id="interests">
-        <h2 class="section-title">Things I’m into</h2>
+        <h2 class="section-title">Things I love</h2>
         <div class="grid">
           <article class="card">
-            <h3>💻 Making things</h3>
-            <p>Trying out coding, building small projects, and learning how websites work.</p>
+            <h3>⚽ Soccer</h3>
+            <p>I love playing and watching soccer, and I look up to players like Lamine Yamal for his skill, speed, and confidence on the field.</p>
           </article>
           <article class="card">
-            <h3>📚 Learning stuff</h3>
-            <p>Exploring new topics, collecting questions, and getting a little better every day.</p>
+            <h3>🎨 Design</h3>
+            <p>I like making things look cool and creative, whether it’s a poster, a website, or an idea for a project.</p>
           </article>
           <article class="card">
-            <h3>🎨 Creative ideas</h3>
-            <p>Thinking up fun ways to make ideas more useful, interesting, or just a bit more colorful.</p>
+            <h3>🚀 Space</h3>
+            <p>Space fascinates me because it’s huge, mysterious, and full of possibilities. I want to learn more about how people explore it.</p>
           </article>
           <article class="card">
-            <h3>🌱 What’s next?</h3>
-            <p>There’s always something new to try. I’m figuring out what I enjoy as I go.</p>
+            <h3>🛠️ Engineering</h3>
+            <p>I enjoy figuring out how things work and how to build useful inventions or solutions to real problems.</p>
           </article>
         </div>
       </section>
@@ -142,24 +144,60 @@
         <h2 class="section-title">Stuff I’m working on</h2>
         <div class="grid">
           <article class="card">
-            <h3>My GitHub Pages site</h3>
-            <p>This little website is my first step toward sharing what I learn and create online.</p>
-            <ul class="tag-list"><li>HTML</li><li>CSS</li><li>Learning</li></ul>
+            <h3>My personal website</h3>
+            <p>This site is one of my first projects, and I’m learning how to build pages, design them, and make them look cool.</p>
+            <ul class="tag-list"><li>HTML</li><li>CSS</li><li>Design</li></ul>
           </article>
           <article class="card">
-            <h3>More projects soon…</h3>
-            <p>When I make something I’m proud of, I’ll add it here. Stay tuned!</p>
-            <ul class="tag-list"><li>Ideas</li><li>Experiments</li></ul>
+            <h3>Big ideas and future goals</h3>
+            <p>I want to keep learning about engineering, design, and technology so I can create something meaningful one day.</p>
+            <ul class="tag-list"><li>Learning</li><li>Ideas</li><li>Future</li></ul>
           </article>
         </div>
       </section>
 
-      <section id="favorites">
-        <h2 class="section-title">Currently into</h2>
-        <div class="note"><strong>My current favorites:</strong> add your favorite subject, book, game, music, or hobby here. ✨</div>
+      <section id="achievements">
+        <h2 class="section-title">Achievements</h2>
+        <ul class="achievement-list">
+          <li>✔️ Built my first personal website and learned how to make it live on GitHub Pages.</li>
+          <li>✔️ Started learning design and web development by creating ideas and trying new things.</li>
+          <li>✔️ Kept improving my soccer skills through practice, teamwork, and dedication.</li>
+          <li>✔️ Explored topics like space, engineering, and creativity to grow my curiosity and confidence.</li>
+        </ul>
       </section>
     </main>
 
-    <footer class="wrap">Made with curiosity (and a little bit of CSS). · <a href="index.html">Home</a></footer>
+    <footer class="wrap">Made with curiosity, soccer energy, and big dreams. · <a href="index.html">Home</a></footer>
+  </body>
+</html>
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Aarish Korasikha's student profile and projects.">
+    <title>Aarish Korasikha | Home</title>
+    <style>
+      :root { --ink: #263044; --muted: #68738a; --pink: #f7a8c4; --blue: #a7d8f5; --paper: #fffdf8; }
+      * { box-sizing: border-box; }
+      body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 24px; color: var(--ink); font-family: "Trebuchet MS", "Segoe UI", sans-serif; background: #fff8f1 radial-gradient(#f2d9d4 1px, transparent 1px); background-size: 22px 22px; }
+      main { width: min(650px, 100%); padding: clamp(28px, 7vw, 56px); text-align: center; background: var(--paper); border: 2px solid var(--ink); border-radius: 28px 18px 30px 18px; box-shadow: 8px 8px 0 var(--pink); }
+      .sticker { display: inline-block; padding: 5px 12px; border-radius: 999px; background: #ffe28a; font-weight: 800; transform: rotate(-2deg); }
+      h1 { margin: 20px 0 10px; font-size: clamp(2.3rem, 8vw, 4rem); line-height: 1.05; letter-spacing: -.05em; }
+      p { max-width: 480px; margin: 0 auto 24px; color: var(--muted); line-height: 1.7; }
+      a { display: inline-block; padding: 11px 18px; color: var(--ink); background: var(--blue); border: 2px solid var(--ink); border-radius: 12px; box-shadow: 3px 3px 0 var(--ink); font-weight: 800; text-decoration: none; }
+      a:hover { transform: translate(-1px, -1px); box-shadow: 5px 5px 0 var(--ink); }
+      a:focus-visible { outline: 3px solid #57418e; outline-offset: 4px; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <span class="sticker">a 7th grader’s corner of the internet ✿</span>
+      <h1>Hey, I'm Aarish!</h1>
+      <p>I'm a 7th grader who loves soccer, design, space, and engineering. I’m learning new things and building cool ideas one step at a time.</p>
+      <a href="profile.html">Come see my profile →</a>
+    </main>
   </body>
 </html>
