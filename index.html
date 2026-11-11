@@ -3,170 +3,27 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Aarish Korasikha's student profile page.">
-    <title>Aarish Korasikha | Student Profile</title>
+    <meta name="description" content="Aarish Korasikha's student profile and interests.">
+    <title>Aarish Korasikha | Home</title>
     <style>
-      :root {
-        color-scheme: light;
-        --ink: #263044;
-        --muted: #68738a;
-        --paper: #fffdf8;
-        --pink: #f7a8c4;
-        --blue: #a7d8f5;
-        --yellow: #ffe28a;
-        --lavender: #c9b8f5;
-        --green: #b7e5cb;
-      }
-
+      :root { --ink: #263044; --muted: #68738a; --pink: #f7a8c4; --blue: #a7d8f5; --paper: #fffdf8; --yellow: #ffe28a; }
       * { box-sizing: border-box; }
-      html { scroll-behavior: smooth; }
-      body {
-        margin: 0;
-        color: var(--ink);
-        font-family: "Trebuchet MS", "Segoe UI", sans-serif;
-        line-height: 1.65;
-        background-color: #fff8f1;
-        background-image: radial-gradient(#f2d9d4 1px, transparent 1px);
-        background-size: 22px 22px;
-      }
-      a { color: #57418e; }
+      body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 24px; color: var(--ink); font-family: "Trebuchet MS", "Segoe UI", sans-serif; background: #fff8f1 radial-gradient(#f2d9d4 1px, transparent 1px); background-size: 22px 22px; }
+      main { width: min(680px, 100%); padding: clamp(28px, 7vw, 56px); text-align: center; background: var(--paper); border: 2px solid var(--ink); border-radius: 28px 18px 30px 18px; box-shadow: 8px 8px 0 var(--pink); }
+      .sticker { display: inline-block; padding: 5px 12px; border-radius: 999px; background: var(--yellow); font-weight: 800; transform: rotate(-2deg); }
+      h1 { margin: 20px 0 10px; font-size: clamp(2.3rem, 8vw, 4rem); line-height: 1.05; letter-spacing: -.05em; }
+      p { max-width: 500px; margin: 0 auto 24px; color: var(--muted); line-height: 1.7; }
+      a { display: inline-block; padding: 11px 18px; color: var(--ink); background: var(--blue); border: 2px solid var(--ink); border-radius: 12px; box-shadow: 3px 3px 0 var(--ink); font-weight: 800; text-decoration: none; }
+      a:hover { transform: translate(-1px, -1px); box-shadow: 5px 5px 0 var(--ink); }
       a:focus-visible { outline: 3px solid #57418e; outline-offset: 4px; }
-      .wrap { width: min(940px, calc(100% - 32px)); margin: 0 auto; }
-      header { padding: 18px 0; }
-      .nav { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
-      .logo { font-weight: 900; letter-spacing: .04em; text-decoration: none; }
-      .nav a { text-decoration: none; font-weight: 700; }
-      .nav-links { display: flex; gap: 18px; flex-wrap: wrap; }
-      main { padding: 28px 0 64px; }
-      .hero {
-        padding: clamp(26px, 6vw, 58px);
-        border: 2px solid var(--ink);
-        border-radius: 28px 18px 30px 18px;
-        background: var(--paper);
-        box-shadow: 8px 8px 0 var(--pink);
-        position: relative;
-        overflow: hidden;
-      }
-      .hero::after {
-        content: "⚽";
-        position: absolute;
-        right: 28px;
-        top: 10px;
-        color: var(--pink);
-        font-size: clamp(4rem, 12vw, 8rem);
-        transform: rotate(12deg);
-        opacity: .8;
-      }
-      .kicker { display: inline-block; padding: 5px 12px; background: var(--yellow); border-radius: 999px; font-size: .88rem; font-weight: 800; transform: rotate(-2deg); }
-      h1 { max-width: 650px; margin: 18px 0 12px; font-size: clamp(2.6rem, 8vw, 5rem); line-height: 1; letter-spacing: -.06em; }
-      h1 span { color: #765ac4; }
-      .intro { max-width: 610px; color: var(--muted); font-size: 1.12rem; }
-      .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
-      .button { display: inline-block; padding: 10px 16px; border: 2px solid var(--ink); border-radius: 12px; background: var(--blue); box-shadow: 3px 3px 0 var(--ink); font-weight: 800; text-decoration: none; }
-      .button:hover { transform: translate(-1px, -1px); box-shadow: 5px 5px 0 var(--ink); }
-      .button.alt { background: var(--lavender); }
-      section { margin-top: 38px; }
-      .section-title { display: flex; align-items: center; gap: 10px; margin: 0 0 16px; font-size: 1.7rem; }
-      .section-title::after { content: ""; height: 3px; flex: 1; background: var(--ink); border-radius: 3px; opacity: .14; }
-      .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
-      .card { padding: 20px; border: 2px solid var(--ink); border-radius: 18px; background: var(--paper); box-shadow: 4px 4px 0 var(--blue); }
-      .card:nth-child(2n) { box-shadow: 4px 4px 0 var(--lavender); }
-      .card h3 { margin: 0 0 8px; }
-      .card p { margin: 0; color: var(--muted); }
-      .tag-list { display: flex; flex-wrap: wrap; gap: 8px; padding: 0; margin: 12px 0 0; list-style: none; }
-      .tag-list li { padding: 4px 10px; border-radius: 999px; background: var(--green); font-size: .85rem; font-weight: 700; }
-      .note { padding: 18px 20px; border-left: 5px solid #e6ad36; border-radius: 8px 16px 16px 8px; background: #fff3cc; }
-      .achievement-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
-      .achievement-list li { padding: 14px 16px; border: 2px solid var(--ink); border-radius: 14px; background: #fff8d8; box-shadow: 4px 4px 0 var(--yellow); }
-      footer { padding: 16px 0 32px; text-align: center; color: var(--muted); font-size: .9rem; }
-      @media (max-width: 620px) {
-        .nav { align-items: flex-start; flex-direction: column; }
-        .grid { grid-template-columns: 1fr; }
-        .hero::after { right: 12px; top: 0; font-size: 4rem; }
-      }
-      @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
     </style>
   </head>
   <body>
-    <header>
-      <nav class="wrap nav" aria-label="Main navigation">
-        <a class="logo" href="index.html">AARISH'S CORNER ✦</a>
-        <div class="nav-links">
-          <a href="#about">About</a>
-          <a href="#interests">Interests</a>
-          <a href="#projects">Projects</a>
-          <a href="#achievements">Achievements</a>
-        </div>
-      </nav>
-    </header>
-
-    <main class="wrap">
-      <div class="hero">
-        <span class="kicker">7th grader • soccer player • dreamer</span>
-        <h1>Hi, I'm <span>Aarish!</span></h1>
-        <p class="intro">I’m a 7th grader who loves soccer, especially watching and learning from players like Lamine Yamal. I’m also really into design, space, and engineering because I like building cool ideas and imagining what the future could look like.</p>
-        <div class="hero-actions">
-          <a class="button" href="#projects">See what I’m into ↓</a>
-          <a class="button alt" href="https://github.com/akorasikha" target="_blank" rel="noreferrer">My GitHub ↗</a>
-        </div>
-      </div>
-
-      <section id="about">
-        <h2 class="section-title">A little about me</h2>
-        <div class="card">
-          <p>I’m a student who loves trying new things and learning at the same time. Soccer keeps me active and teaches me teamwork, discipline, and never giving up. I also enjoy creativity, especially design, and I like thinking about how engineering and space can help people solve big problems.</p>
-        </div>
-      </section>
-
-      <section id="interests">
-        <h2 class="section-title">Things I love</h2>
-        <div class="grid">
-          <article class="card">
-            <h3>⚽ Soccer</h3>
-            <p>I love playing and watching soccer, and I look up to players like Lamine Yamal for his skill, speed, and confidence on the field.</p>
-          </article>
-          <article class="card">
-            <h3>🎨 Design</h3>
-            <p>I like making things look cool and creative, whether it’s a poster, a website, or an idea for a project.</p>
-          </article>
-          <article class="card">
-            <h3>🚀 Space</h3>
-            <p>Space fascinates me because it’s huge, mysterious, and full of possibilities. I want to learn more about how people explore it.</p>
-          </article>
-          <article class="card">
-            <h3>🛠️ Engineering</h3>
-            <p>I enjoy figuring out how things work and how to build useful inventions or solutions to real problems.</p>
-          </article>
-        </div>
-      </section>
-
-      <section id="projects">
-        <h2 class="section-title">Stuff I’m working on</h2>
-        <div class="grid">
-          <article class="card">
-            <h3>My personal website</h3>
-            <p>This site is one of my first projects, and I’m learning how to build pages, design them, and make them look cool.</p>
-            <ul class="tag-list"><li>HTML</li><li>CSS</li><li>Design</li></ul>
-          </article>
-          <article class="card">
-            <h3>Big ideas and future goals</h3>
-            <p>I want to keep learning about engineering, design, and technology so I can create something meaningful one day.</p>
-            <ul class="tag-list"><li>Learning</li><li>Ideas</li><li>Future</li></ul>
-          </article>
-        </div>
-      </section>
-
-      <section id="achievements">
-        <h2 class="section-title">Achievements</h2>
-        <ul class="achievement-list">
-          <li>✔️ Built my first personal website and learned how to make it live on GitHub Pages.</li>
-          <li>✔️ Started learning design and web development by creating ideas and trying new things.</li>
-          <li>✔️ Kept improving my soccer skills through practice, teamwork, and dedication.</li>
-          <li>✔️ Explored topics like space, engineering, and creativity to grow my curiosity and confidence.</li>
-        </ul>
-      </section>
+    <main>
+      <span class="sticker">a 7th grader’s corner of the internet ✿</span>
+      <h1>Hey, I'm Aarish!</h1>
+      <p>I'm a 7th grader who loves soccer, chess, robotics, design, space, and engineering. I play with robots, explore new ideas, and enjoy building things with code.</p>
+      <a href="profile.html">Come see my profile →</a>
     </main>
-
-    <footer class="wrap">Made with curiosity, soccer energy, and big dreams. · <a href="index.html">Home</a></footer>
   </body>
 </html>
