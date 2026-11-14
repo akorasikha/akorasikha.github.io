@@ -8,20 +8,21 @@
     <style>
       :root {
         color-scheme: dark;
-        --bg-1: #070b17;
-        --bg-2: #0e1630;
-        --bg-3: #150d2b;
-        --panel: rgba(14, 22, 41, 0.7);
-        --panel-strong: rgba(17, 25, 45, 0.9);
-        --line: rgba(148, 163, 184, 0.35);
-        --text: #edf6ff;
-        --muted: #b7c9df;
-        --cyan: #67e8f9;
-        --pink: #f472b6;
-        --violet: #a78bfa;
-        --lime: #b8ff9a;
-        --amber: #fbbf24;
-        --shadow: rgba(103, 232, 249, 0.45);
+        --bg-1: #090b1a;
+        --bg-2: #10162a;
+        --bg-3: #160d2d;
+        --panel: rgba(16, 24, 42, 0.8);
+        --panel-2: rgba(25, 22, 48, 0.9);
+        --line: rgba(110, 231, 255, 0.42);
+        --line-soft: rgba(255, 255, 255, 0.12);
+        --text: #edf7ff;
+        --muted: #b5c4dc;
+        --cyan: #7ef9ff;
+        --pink: #ff5ec9;
+        --violet: #9d7dff;
+        --lime: #bafc7a;
+        --gold: #ffd85b;
+        --shadow: rgba(126, 249, 255, 0.35);
       }
 
       * { box-sizing: border-box; }
@@ -33,12 +34,10 @@
         font-family: "Trebuchet MS", "Segoe UI", sans-serif;
         line-height: 1.65;
         background:
-          radial-gradient(circle at 20% 20%, rgba(103, 232, 249, 0.18), transparent 22%),
-          radial-gradient(circle at 80% 10%, rgba(244, 114, 182, 0.18), transparent 25%),
-          radial-gradient(circle at 50% 80%, rgba(167, 139, 250, 0.16), transparent 22%),
-          linear-gradient(135deg, var(--bg-1), var(--bg-2) 35%, var(--bg-3));
-        min-height: 100vh;
-        position: relative;
+          radial-gradient(circle at 15% 20%, rgba(126, 249, 255, 0.24), transparent 20%),
+          radial-gradient(circle at 80% 10%, rgba(255, 94, 201, 0.2), transparent 22%),
+          radial-gradient(circle at 50% 100%, rgba(157, 125, 255, 0.15), transparent 28%),
+          linear-gradient(135deg, var(--bg-1), var(--bg-2) 40%, var(--bg-3));
         overflow-x: hidden;
       }
 
@@ -46,30 +45,41 @@
         content: "";
         position: fixed;
         inset: 0;
-        pointer-events: none;
-        background-image:
+        background:
           linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
           linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-        background-size: 24px 24px;
-        mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+        background-size: 22px 22px;
+        pointer-events: none;
+      }
+
+      body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background: repeating-linear-gradient(
+          180deg,
+          rgba(255,255,255,0.04),
+          rgba(255,255,255,0.04) 1px,
+          transparent 2px,
+          transparent 4px
+        );
+        opacity: 0.18;
+        pointer-events: none;
       }
 
       a { color: var(--cyan); }
       a:focus-visible { outline: 3px solid var(--cyan); outline-offset: 4px; }
 
-      .wrap {
-        width: min(940px, calc(100% - 32px));
-        margin: 0 auto;
-      }
+      .wrap { width: min(940px, calc(100% - 32px)); margin: 0 auto; }
 
       header {
-        padding: 18px 0;
         position: sticky;
         top: 0;
         z-index: 10;
-        backdrop-filter: blur(16px);
-        background: rgba(7, 11, 23, 0.38);
-        border-bottom: 1px solid rgba(255,255,255,0.06);
+        padding: 18px 0;
+        background: rgba(9, 11, 26, 0.42);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(255,255,255,0.07);
       }
 
       .nav {
@@ -83,21 +93,19 @@
         text-decoration: none;
         color: var(--text);
         font-weight: 900;
-        letter-spacing: .12em;
+        letter-spacing: .14em;
+        font-size: .8rem;
         text-transform: uppercase;
-        font-size: .82rem;
       }
 
       .nav a {
         text-decoration: none;
-        font-weight: 700;
         color: var(--muted);
-        transition: color 0.2s ease;
+        font-weight: 700;
+        transition: color .2s ease;
       }
 
-      .nav a:hover {
-        color: var(--cyan);
-      }
+      .nav a:hover { color: var(--cyan); }
 
       .nav-links {
         display: flex;
@@ -105,17 +113,16 @@
         flex-wrap: wrap;
       }
 
-      main {
-        padding: 28px 0 64px;
-      }
+      main { padding: 28px 0 64px; }
 
       .hero {
         position: relative;
         padding: clamp(26px, 6vw, 58px);
-        border: 1px solid var(--line);
-        border-radius: 28px 18px 30px 18px;
-        background: linear-gradient(135deg, rgba(17, 25, 45, 0.9), rgba(9, 15, 30, 0.8));
-        box-shadow: 0 0 0 1px rgba(255,255,255,0.04), 0 24px 80px rgba(15, 23, 42, 0.72), 0 0 40px rgba(103, 232, 249, 0.18);
+        color: var(--text);
+        border: 2px solid var(--line);
+        border-radius: 26px 18px 26px 18px;
+        background: linear-gradient(135deg, rgba(21, 31, 54, 0.95), rgba(17, 22, 39, 0.92));
+        box-shadow: 0 0 0 2px rgba(255,255,255,0.04), 0 20px 48px rgba(12, 20, 42, 0.8), 0 0 28px rgba(126, 249, 255, 0.16);
         overflow: hidden;
       }
 
@@ -123,40 +130,40 @@
         content: "";
         position: absolute;
         inset: 0;
-        background: radial-gradient(circle at 22% 30%, rgba(103, 232, 249, 0.18), transparent 25%);
+        background: radial-gradient(circle at 25% 30%, rgba(126, 249, 255, 0.22), transparent 25%);
       }
 
       .hero::after {
-        content: "🚀";
+        content: "🎮";
         position: absolute;
         right: 28px;
         top: 12px;
         font-size: clamp(4rem, 12vw, 8rem);
-        transform: rotate(18deg);
-        opacity: 0.8;
-        filter: drop-shadow(0 0 18px rgba(103, 232, 249, 0.8));
+        transform: rotate(12deg);
+        filter: drop-shadow(0 0 18px rgba(255, 94, 201, 0.45));
+        opacity: 0.9;
       }
 
       .kicker {
         position: relative;
         display: inline-block;
-        padding: 6px 14px;
-        background: linear-gradient(135deg, rgba(103,232,249,0.2), rgba(167,139,250,0.2));
-        border: 1px solid rgba(103, 232, 249, 0.5);
-        border-radius: 999px;
-        font-size: .88rem;
-        font-weight: 800;
-        letter-spacing: .08em;
+        padding: 7px 14px;
+        border: 2px solid rgba(126, 249, 255, 0.9);
+        background: rgba(126, 249, 255, 0.08);
+        border-radius: 10px;
+        box-shadow: inset 0 0 12px rgba(126,249,255,0.15), 0 0 18px rgba(126,249,255,0.18);
+        font-size: .8rem;
+        font-weight: 900;
+        letter-spacing: .12em;
         text-transform: uppercase;
         color: var(--cyan);
-        box-shadow: 0 0 18px rgba(103, 232, 249, 0.2);
       }
 
       h1 {
         position: relative;
         max-width: 650px;
         margin: 18px 0 12px;
-        font-size: clamp(2.6rem, 8vw, 5rem);
+        font-size: clamp(2.5rem, 8vw, 5rem);
         line-height: .95;
         letter-spacing: -.06em;
       }
@@ -166,12 +173,12 @@
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
-        text-shadow: 0 0 18px rgba(103, 232, 249, 0.22);
+        text-shadow: 0 0 16px rgba(126, 249, 255, 0.24);
       }
 
       .intro {
         position: relative;
-        max-width: 640px;
+        max-width: 620px;
         color: var(--muted);
         font-size: 1.12rem;
       }
@@ -187,10 +194,10 @@
       .button {
         display: inline-block;
         padding: 12px 18px;
-        border: 1px solid rgba(103, 232, 249, 0.8);
+        border: 2px solid rgba(126, 249, 255, 0.8);
         border-radius: 12px;
-        background: linear-gradient(135deg, rgba(103,232,249,0.2), rgba(167,139,250,0.2));
-        box-shadow: 0 0 0 1px rgba(255,255,255,0.04), 0 14px 28px rgba(103, 232, 249, 0.18);
+        background: linear-gradient(135deg, rgba(126,249,255,0.14), rgba(157,125,255,0.12));
+        box-shadow: 0 0 0 1px rgba(255,255,255,0.04), 0 0 18px rgba(126, 249, 255, 0.14);
         font-weight: 800;
         text-decoration: none;
         color: var(--text);
@@ -199,17 +206,15 @@
 
       .button:hover {
         transform: translate(-2px, -2px);
-        box-shadow: 0 0 0 1px rgba(255,255,255,0.04), 0 18px 32px rgba(103, 232, 249, 0.22);
+        box-shadow: 0 0 0 1px rgba(255,255,255,0.04), 0 0 24px rgba(126, 249, 255, 0.2);
       }
 
       .button.alt {
-        background: linear-gradient(135deg, rgba(244,114,182,0.18), rgba(167,139,250,0.18));
-        border-color: rgba(244, 114, 182, 0.75);
+        background: linear-gradient(135deg, rgba(255,94,201,0.12), rgba(157,125,255,0.12));
+        border-color: rgba(255, 94, 201, 0.8);
       }
 
-      section {
-        margin-top: 38px;
-      }
+      section { margin-top: 38px; }
 
       .section-title {
         display: flex;
@@ -224,7 +229,7 @@
         content: "";
         height: 3px;
         flex: 1;
-        background: linear-gradient(90deg, var(--cyan), var(--violet));
+        background: linear-gradient(90deg, var(--cyan), var(--pink), var(--violet));
         border-radius: 999px;
         opacity: .8;
       }
@@ -237,31 +242,24 @@
 
       .card {
         padding: 20px;
-        border: 1px solid var(--line);
+        border: 2px solid var(--line);
         border-radius: 18px;
-        background: linear-gradient(180deg, rgba(12, 18, 30, 0.9), rgba(17, 25, 45, 0.8));
-        box-shadow: 0 10px 30px rgba(15, 23, 42, 0.38);
+        background: linear-gradient(180deg, rgba(15, 22, 38, 0.9), rgba(20, 25, 43, 0.82));
+        box-shadow: inset 0 0 16px rgba(126,249,255,0.04), 0 10px 24px rgba(15, 23, 42, 0.46);
         transition: transform .2s ease, border-color .2s ease;
       }
 
       .card:hover {
         transform: translateY(-2px);
-        border-color: rgba(103, 232, 249, 0.5);
+        border-color: rgba(126, 249, 255, 0.8);
       }
 
       .card:nth-child(2n) {
-        box-shadow: 0 10px 30px rgba(26, 14, 42, 0.42);
+        box-shadow: inset 0 0 16px rgba(255,94,201,0.04), 0 10px 24px rgba(31, 18, 46, 0.42);
       }
 
-      .card h3 {
-        margin: 0 0 8px;
-        color: var(--text);
-      }
-
-      .card p {
-        margin: 0;
-        color: var(--muted);
-      }
+      .card h3 { margin: 0 0 8px; color: var(--text); }
+      .card p { margin: 0; color: var(--muted); }
 
       .tag-list {
         display: flex;
@@ -274,9 +272,9 @@
 
       .tag-list li {
         padding: 6px 10px;
-        border-radius: 999px;
-        background: linear-gradient(135deg, rgba(184,255,154,0.18), rgba(103,232,249,0.18));
-        border: 1px solid rgba(184,255,154,0.35);
+        border-radius: 10px;
+        border: 1px solid rgba(186, 252, 122, 0.45);
+        background: rgba(186, 252, 122, 0.08);
         color: var(--text);
         font-size: .85rem;
         font-weight: 700;
@@ -292,11 +290,11 @@
 
       .achievement-list li {
         padding: 16px 18px;
-        border: 1px solid rgba(251,191,36,0.45);
+        border: 2px solid rgba(255,216,91,0.45);
         border-radius: 16px;
-        background: linear-gradient(135deg, rgba(251,191,36,0.12), rgba(244,114,182,0.08));
+        background: rgba(255, 216, 91, 0.08);
+        box-shadow: inset 0 0 14px rgba(255,216,91,0.05), 0 8px 18px rgba(255,216,91,0.06);
         color: var(--text);
-        box-shadow: 0 10px 24px rgba(251, 191, 36, 0.08);
       }
 
       footer {
@@ -307,20 +305,9 @@
       }
 
       @media (max-width: 620px) {
-        .nav {
-          align-items: flex-start;
-          flex-direction: column;
-        }
-
-        .grid {
-          grid-template-columns: 1fr;
-        }
-
-        .hero::after {
-          right: 12px;
-          top: 0;
-          font-size: 4rem;
-        }
+        .nav { align-items: flex-start; flex-direction: column; }
+        .grid { grid-template-columns: 1fr; }
+        .hero::after { right: 12px; top: 0; font-size: 4rem; }
       }
 
       @media (prefers-reduced-motion: reduce) {
@@ -341,9 +328,9 @@
 
     <main class="wrap">
       <div class="hero">
-        <span class="kicker">7th grader • future engineer • dream builder</span>
+        <span class="kicker">7th grader • gamer energy • builder</span>
         <h1>Hi, I'm <span>Aarish!</span></h1>
-        <p class="intro">I’m a 7th grader who loves soccer, especially watching and learning from players like Lamine Yamal. I’m also into chess, robotics, design, space, and engineering. I enjoy building ideas and turning curiosity into projects that feel big and exciting.</p>
+        <p class="intro">I’m a 7th grader who loves soccer, especially watching and learning from players like Lamine Yamal. I’m also into chess, robotics, design, space, and engineering. I enjoy building ideas, unlocking new skills, and turning curiosity into awesome projects.</p>
         <div class="hero-actions">
           <a class="button" href="#projects">See what I’m into ↓</a>
           <a class="button alt" href="https://github.com/akorasikha" target="_blank" rel="noreferrer">My GitHub ↗</a>
@@ -352,7 +339,7 @@
 
       <section id="about">
         <h2 class="section-title">A little about me</h2>
-        <div class="card"><p>I’m a student who loves trying new things and learning as I go. Soccer teaches me teamwork and persistence, while chess helps me think ahead. I also enjoy designing and building creative ideas, from websites to robot concepts to solutions that could one day make an impact.</p></div>
+        <div class="card"><p>I’m a student who loves trying new things and learning as I go. Soccer teaches me teamwork and persistence, while chess helps me think ahead. I also enjoy designing and building creative ideas, from websites to robot concepts to inventions that could one day make a real impact.</p></div>
       </section>
 
       <section id="interests">
@@ -370,7 +357,7 @@
       <section id="projects">
         <h2 class="section-title">Stuff I’m working on</h2>
         <div class="grid">
-          <article class="card"><h3>My personal website</h3><p>This site is one of my projects. I’m learning how to build web pages and make them look clean, creative, and a little futuristic.</p><ul class="tag-list"><li>Web design</li><li>HTML</li><li>CSS</li></ul></article>
+          <article class="card"><h3>My personal website</h3><p>This site is one of my projects. I’m learning how to build web pages and make them look clean, creative, and game-like.</p><ul class="tag-list"><li>Web design</li><li>HTML</li><li>CSS</li></ul></article>
           <article class="card"><h3>Robotics and big ideas</h3><p>I enjoy using engineering and code to bring ideas to life, and I’m excited to keep learning and making new things.</p><ul class="tag-list"><li>Robotics</li><li>Engineering</li><li>Creativity</li></ul></article>
         </div>
       </section>
@@ -397,3 +384,4 @@
     <footer class="wrap">Made with curiosity, soccer energy, and big dreams. · <a href="index.html">Home</a></footer>
   </body>
 </html>
+
