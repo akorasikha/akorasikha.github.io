@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bounce Game</title>
+  <style>
+    :root { color-scheme: dark; font-family: "Trebuchet MS", "Segoe UI", sans-serif; }
+    body {
+      min-height: 100vh;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      color: #edf6ff;
+      background: radial-gradient(circle at top, #17264a, #070b17 70%);
+    }
+    main { width: min(540px, calc(100% - 32px)); text-align: center; }
+    h1 { color: #67e8f9; }
+    p { color: #b7c9df; }
+    canvas {
+      display: block;
+      width: 100%;
+      max-width: 500px;
+      margin: 18px auto;
+      border: 1px solid #67e8f9;
+      border-radius: 12px;
+      background: #f8fafc;
+      touch-action: none;
+    }
+    .controls { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 10px; }
+    input, button {
+      padding: 10px 14px;
+      border: 1px solid #67e8f9;
+      border-radius: 10px;
+      font: inherit;
+    }
+    input { width: 70px; color: #edf6ff; background: #11192d; }
+    button { color: #edf6ff; background: #17264a; font-weight: 700; cursor: pointer; }
+    button:hover { background: #243963; }
+    a { color: #67e8f9; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>🏓 Bounce Game</h1>
+    <p>Choose a speed, then click Start Game. Use the ← and → arrow keys (or drag on the game) to move the paddle.</p>
+    <div class="controls">
+      <label for="speed">Speed (1–10):</label>
+      <input id="speed" type="number" min="1" max="10" value="5">
+      <button id="start" type="button">Start Game</button>
+    </div>
+    <p id="status" aria-live="polite">Ready when you are!</p>
+    <canvas id="game" width="500" height="400" aria-label="Bounce game play area"></canvas>
+    <p><a href="../profile.html">← Back to profile</a></p>
+  </main>
+  <script>
+    const canvas = document.getElementById('game');
+    const ctx = canvas.getContext('2d');
+    const speedInput = document.getElementById('speed');
+    const startButton = document.getElementById('start');
+    const status = document.getElementById('status');
+    const paddle = { x: 200, y: 350, width: 100, height: 12, speed: 0 };
+    const ball = { x: 250, y: 180, radius: 9, dx: 3, dy: 3 };
+    let playing = false;
+    let animationId;
+    let score = 0;
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = '#17264a';
+      ctx.fillRect(paddle.x, paddle.y, paddle.width, paddle.height);
+      ctx.beginPath();
+      ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
+      ctx.fillStyle = '#e11d48';
+      ctx.fill();
+      ctx.fillStyle = '#111827';
+      ctx.font = '16px sans-serif';
+      ctx.fillText(`Score: ${score}`, 12, 24);
+      if (!playing && status.textContent.startsWith('Game over')) {
+        ctx.fillStyle = 'rgba(7, 11, 23, 0.72)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#ffffff';
+        ctx.textAlign = 'center';
+        ctx.font = 'bold 32px sans-serif';
+        ctx.fillText('GAME OVER', canvas.width / 2, canvas.height / 2 - 8);
+        ctx.font = '18px sans-serif';
+        ctx.fillText(`Your score: ${score}`, canvas.width / 2, canvas.height / 2 + 25);
+        ctx.textAlign = 'start';
+      }
+    }
+
+    function gameLoop() {
+      if (!playing) return;
+      paddle.x = Math.max(0, Math.min(canvas.width - paddle.width, paddle.x + paddle.speed));
+      ball.x += ball.dx;
+      ball.y += ball.dy;
+      if (ball.x - ball.radius <= 0 || ball.x + ball.radius >= canvas.width) ball.dx *= -1;
+      if (ball.y - ball.radius <= 0) ball.dy = Math.abs(ball.dy);
+      if (ball.dy > 0 && ball.y + ball.radius >= paddle.y && ball.y - ball.radius <= paddle.y + paddle.height && ball.x >= paddle.x && ball.x <= paddle.x + paddle.width) {
+        ball.dy = -Math.abs(ball.dy);
+        score += 1;
+      }
+      if (ball.y - ball.radius > canvas.height) {
+        playing = false;
+        status.textContent = `Game over! Your score: ${score}. Click Start Game to play again.`;
+        draw();
+        return;
+      }
+      draw();
+      animationId = requestAnimationFrame(gameLoop);
+    }
+
+    function beginCountdown(count) {
+      status.textContent = String(count);
+      draw();
+      if (count > 1) {
+        window.setTimeout(() => beginCountdown(count - 1), 1000);
+      } else {
+        window.setTimeout(() => {
+          status.textContent = 'Go!';
+          playing = true;
+          gameLoop();
+        }, 1000);
+      }
+    }
+
+    startButton.addEventListener('click', () => {
+      const speed = Number(speedInput.value);
+      if (!Number.isInteger(speed) || speed < 1 || speed > 10) {
+        status.textContent = 'Please enter a speed from 1 to 10.';
+        speedInput.focus();
+        return;
+      }
+      cancelAnimationFrame(animationId);
+      playing = false;
+      score = 0;
+      paddle.x = (canvas.width - paddle.width) / 2;
+      paddle.speed = 0;
+      ball.x = canvas.width / 2;
+      ball.y = 180;
+      ball.dx = (Math.random() < 0.5 ? -1 : 1) * Math.max(2, speed * 0.55);
+      ball.dy = Math.max(2, speed * 0.55);
+      startButton.disabled = true;
+      speedInput.disabled = true;
+      beginCountdown(3);
+      window.setTimeout(() => {
+        startButton.disabled = false;
+        speedInput.disabled = false;
+      }, 4000);
+    });
+
+    window.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') event.preventDefault();
+      if (event.key === 'ArrowLeft') paddle.speed = -6;
+      if (event.key === 'ArrowRight') paddle.speed = 6;
+    });
+    window.addEventListener('keyup', (event) => {
+      if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') paddle.speed = 0;
+    });
+    canvas.addEventListener('pointermove', (event) => {
+      if (!playing) return;
+      const rect = canvas.getBoundingClientRect();
+      paddle.x = (event.clientX - rect.left) * (canvas.width / rect.width) - paddle.width / 2;
+      paddle.x = Math.max(0, Math.min(canvas.width - paddle.width, paddle.x));
+    });
+
+    draw();
+  </script>
+</body>
+</html>
